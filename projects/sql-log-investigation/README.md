@@ -1,4 +1,4 @@
-# sql-log-investigation
+# SQL Log Investigation
 
 
 🚧 Status: ⏳ Planned
