@@ -2,9 +2,7 @@
 
 Welcome to my Cloud Security Portfolio.
 
-This repository documents my journey from completing the Google Cybersecurity Professional Certificate to developing practical skills in Cloud Security.
-
-My goal is to build hands-on experience through real-world inspired projects focused on cybersecurity, Linux, Python, SQL, incident response, and cloud technologies.
+This repository contains hands-on cybersecurity and cloud security projects designed to demonstrate practical technical skills in Linux, Python, SQL, incident response, and AWS.
 
 ---
 
