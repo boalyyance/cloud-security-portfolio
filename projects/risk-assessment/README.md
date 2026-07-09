@@ -92,5 +92,3 @@ Future improvements could include:
 - Risk Assessment Methodology
 - Security Controls Assessment
 - Compliance Review
-- Markdown Documentation
-- Git & GitHub
