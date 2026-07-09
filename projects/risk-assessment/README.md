@@ -8,7 +8,7 @@ The objective was to evaluate existing security controls, identify risks and com
 
 This assessment demonstrates practical skills in risk analysis, security control evaluation, documentation, and compliance review.
 
-# Internal Security Audit – Botium Toys (Simulated)
+## Internal Security Audit – Botium Toys (Simulated)
 
 ## Scenario
 Botium Toys is a small U.S. business that develops and sells toys, with a single physical location serving as office, storefront, and warehouse. 
@@ -27,9 +27,9 @@ The audit scope includes the entire security program at Botium Toys, covering IT
   
 - Complete the security controls and compliance checklist.
   
-- Identify gaps in security controls and compliance
+- Identify gaps in security controls and compliance.
   
-- Provide actionable recommendations to improve overall security posture
+- Provide actionable recommendations to improve overall security posture.
 
 ## Methodology
 
@@ -101,7 +101,7 @@ Future improvements could include:
 
 - **Security Control Evaluation**: Evaluated technical, administrative, and physical security controls, including firewalls, antivirus, access controls, and legacy system management.
     
-- **Regulatory Compliance Awareness**: Assessed compliance with NIST CSF and relevant U.S. and E.U. regulations, including GDPR and data privacy requirements.
+- **Regulatory Compliance Awareness**: Assessed compliance with NIST CSF and relevant U.S. and EU regulations, including GDPR and data privacy requirements.
   
 - **Access Management & Least Privilege**: Applied principles of least privilege, proper user access controls, and centralized account/password management policies.
   
@@ -114,3 +114,12 @@ Future improvements could include:
 - **Documentation & Reporting**: Produced professional audit documentation, summarizing methodology, findings, and actionable recommendations.
   
 - **Analytical & Problem-Solving Skills**: Applied structured thinking to identify risks, prioritize remediation, and propose practical solutions.
+
+## Tools & Frameworks
+
+- NIST Cybersecurity Framework (CSF)
+- Risk Assessment Methodology
+- Security Controls Assessment
+- Compliance Review
+- Markdown Documentation
+- Git & GitHub
