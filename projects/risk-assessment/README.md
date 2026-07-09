@@ -1,6 +1,12 @@
 # Risk Assessment & Security Audit – Botium Toys
 
-This project presents a simulated internal security audit conducted for the fictional company Botium Toys. The assessment evaluates existing security controls, identifies risks and vulnerabilities, and provides recommendations aligned with the NIST Cybersecurity Framework (CSF).
+## Project Overview
+
+This project simulates an internal security audit for Botium Toys, a fictional retail company.
+
+The objective was to evaluate existing security controls, identify risks and compliance gaps, and propose recommendations based on the NIST Cybersecurity Framework (CSF).
+
+This assessment demonstrates practical skills in risk analysis, security control evaluation, documentation, and compliance review.
 
 # Internal Security Audit – Botium Toys (Simulated)
 
@@ -8,7 +14,7 @@ This project presents a simulated internal security audit conducted for the fict
 Botium Toys is a small U.S. business that develops and sells toys, with a single physical location serving as office, storefront, and warehouse. 
 Their online presence has grown internationally, putting pressure on the IT department to maintain secure operations.
 
-The IT manager initiated an internal audit to better secure the company’s infrastructure, identify potential risks, threats, and vulnerabilities, and ensure compliance with regulations for processing online payments and conducting business in the E.U.
+The IT manager initiated an internal audit to better secure the company’s infrastructure, identify potential risks, threats, and vulnerabilities, and ensure compliance with regulations for processing online payments and conducting business in the European Union (EU).
 
 ## Objective
 To evaluate existing IT controls, identify gaps and vulnerabilities, and provide actionable recommendations to improve Botium Toys' security posture while supporting compliance with NIST CSF and relevant regulations.
@@ -17,9 +23,9 @@ To evaluate existing IT controls, identify gaps and vulnerabilities, and provide
 The audit scope includes the entire security program at Botium Toys, covering IT assets (employee devices, office equipment), internal networks, and critical systems. All assets and existing controls will be reviewed for compliance and effectiveness.
 
 ### Goals
-- Assess existing IT assets and classify them by criticality
+- Assess and classify existing IT assets based on their criticality.
   
-- Complete controls and compliance checklist
+- Complete the security controls and compliance checklist.
   
 - Identify gaps in security controls and compliance
   
@@ -51,7 +57,7 @@ The audit revealed several vulnerabilities and gaps in Botium Toys’ IT environ
 | Physical Security          | Physical controls including CCTV, door locks, and fire prevention systems are properly implemented.                                                                                                          | 🟢 Low Risk |
 | Existing Security Controls | Firewalls and antivirus solutions are deployed and monitored, contributing to system availability and integrity.                                                                                             | 🟢 Strength |
 
-## Risk Prioritazion
+## Risk Prioritization
 
 | Risk                 | Severity |
 | -------------------- | -------- |
