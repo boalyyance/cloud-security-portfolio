@@ -5,7 +5,7 @@ Botium Toys is a small U.S. business that develops and sells toys, with a single
 
 The IT manager initiated an internal audit to better secure the company's infrastructure, identify potential risks, threats, and vulnerabilities, and ensure compliance with regulations for processing online payments and conducting business in the European Union (EU).
 
-This project simulates that internal security audit, evaluating existing security controls, identifying risks and compliance gaps, and proposing recommendations based on the NIST Cybersecurity Framework (CSF). It demonstrates practical skills in risk analysis, security control evaluation, documentation, and compliance review.
+This project simulates an internal security audit for Botium Toys by evaluating existing security controls, identifying risks and compliance gaps, and proposing recommendations based on the NIST Cybersecurity Framework (CSF).
 
 ## Objective
 To evaluate existing IT controls, identify gaps and vulnerabilities, and provide actionable recommendations to improve Botium Toys' security posture while supporting compliance with NIST CSF and relevant regulations.
@@ -29,7 +29,7 @@ The assessment followed a structured five-step methodology based on the NIST Cyb
 4. **Compliance Review** – Compare practices against NIST CSF and relevant regulations.
 5. **Documentation** – Compile findings and recommendations.
 
-## Risk Matrix
+## Key Findings
 
 | Category                   | Finding                                                                                                                                                                   | Risk Level  |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
@@ -78,7 +78,7 @@ Future improvements could include:
 
 - **Risk Assessment & Analysis**: Conducted a detailed risk assessment of IT assets, identifying vulnerabilities, potential threats, and gaps in controls.
 - **Security Control Evaluation**: Evaluated technical, administrative, and physical security controls, including firewalls, antivirus, access controls, and legacy system management.
-- **Regulatory Compliance Awareness**: Assessed compliance with NIST CSF and relevant U.S. and E.U. regulations, including GDPR and data privacy requirements.
+- **Regulatory Compliance Awareness**: Assessed compliance with NIST CSF and relevant U.S. and EU regulations, including GDPR and data privacy requirements.
 - **Access Management & Least Privilege**: Applied principles of least privilege, proper user access controls, and centralized account/password management policies.
 - **Data Protection & Encryption**: Evaluated encryption needs and data protection mechanisms to safeguard sensitive information.
 - **Disaster Recovery & Business Continuity Planning**: Designed recommendations for backup strategies and disaster recovery plans to maintain operational continuity.
