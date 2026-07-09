@@ -114,3 +114,9 @@ Future improvements could include:
 - **Documentation & Reporting**: Produced professional audit documentation, summarizing methodology, findings, and actionable recommendations.
   
 - **Analytical & Problem-Solving Skills**: Applied structured thinking to identify risks, prioritize remediation, and propose practical solutions.
+
+
+## Documentation
+
+- 📄 [Scope, Goals & Risk Assessment Report](./Scope-goals-risk-assessment-report.pdf)
+- 📋 [Controls and Compliance Checklist](./Controls-and-compliance-checklist.pdf)
