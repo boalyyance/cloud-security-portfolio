@@ -44,8 +44,8 @@ The assessment followed a structured five-step methodology based on the NIST Cyb
 
 ## Documentation
 
-- 📄 [Scope, Goals & Risk Assessment Report](./Scope-goals-risk-assessment-report.pdf)
-- 📋 [Controls and Compliance Checklist](./Controls-and-compliance-checklist.pdf)
+- 📄 [Scope, Goals & Risk Assessment Report](./Scope-goals-risk-assessment-report.pdf) *(if preview doesn't load, click "Download raw file")*
+- 📋 [Controls and Compliance Checklist](./Controls-and-compliance-checklist.pdf) *(if preview doesn't load, click "Download raw file")*
 
 ## Recommendations and Expected Benefits
 
