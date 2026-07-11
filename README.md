@@ -21,7 +21,7 @@ This repository contains hands-on cybersecurity and cloud security projects desi
 | Project | Status |
 |---|---|
 | [Risk Assessment](./projects/risk-assessment/) | ✅ Done |
-| [Linux Security Lab](./projects/linux-security-lab/) | ⏳ Planned |
+| [Linux Security Lab](./projects/linux-security-lab/) | 🚧 In progress |
 | [SQL Log Investigation](./projects/sql-log-investigation/) | ⏳ Planned |
 | [Python Automation](./projects/python-automation/) | ⏳ Planned |
 | [Incident Response](./projects/incident-response/) | ⏳ Planned |
