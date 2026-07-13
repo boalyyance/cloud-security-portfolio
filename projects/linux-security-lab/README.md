@@ -47,11 +47,88 @@ sudo apt upgrade -y
 ---
 
 ### 2. User Account Review
-*(pending)*
+
+**Baseline:**
+Reviewed all system accounts using `cat /etc/passwd` to identify which accounts had login-capable shells versus system/service accounts.
+
+- All service accounts (e.g., `daemon`, `bin`, `www-data`) were correctly configured with `/usr/sbin/nologin` or `/bin/false`, preventing interactive login.
+- One exception was noted: the `sync` account uses `/bin/sync`, which is standard, well-documented Unix/Linux behavior (allows forcing a disk write from the login prompt without authentication) and does not represent a misconfiguration.
+- Verified administrative privileges using `getent group sudo` — only the intended administrator account was a member of the `sudo` group, with no unnecessary or unexpected accounts holding elevated privileges.
+
+**Remediation:**
+No remediation was required. All accounts were found to be correctly configured at first boot, following the principle of least privilege.
+
+**Verification:**
+Findings were confirmed by directly inspecting command output (`/etc/passwd` and `getent group sudo`) rather than relying on default assumptions.
+
+**Why it matters:** Reviewing user accounts — even when no issues are found — establishes a documented baseline for account governance. It confirms that service accounts cannot be used as an entry point for unauthorized login, and that administrative access is limited to the intended personnel, reducing the attack surface from the start.
+
+---
 
 ### 3. SSH Hardening
-*(pending)*
 
+**Baseline:**
+After installing OpenSSH server (intentionally not installed during OS setup, to allow full manual configuration and documentation), the default configuration was reviewed using:
+```bash
+sudo cat /etc/ssh/sshd_config | grep -E "PermitRootLogin|PasswordAuthentication|Port"
+```
+
+Findings:
+| Setting | Default Value | Risk |
+|---|---|---|
+| `Port` | 22 (commented, using internal default) | Low — increases exposure to automated bot scans |
+| `PermitRootLogin` | `prohibit-password` (commented, using internal default) | Medium — root login still possible via key |
+| `PasswordAuthentication` | `yes` (commented, using internal default) | High — allows brute-force login attempts |
+
+Given the organization's remote workforce, password-based SSH authentication was identified as the highest-priority risk, as it directly exposes the server to automated brute-force attacks over the internet.
+
+**Remediation:**
+
+1. Generated a dedicated SSH key pair (Ed25519) on the client machine, protected with a passphrase:
+```bash
+ssh-keygen -t ed25519 -C "northwind-admin-key" -f ~/.ssh/northwind_server_key
+```
+
+2. Copied the public key to the server and confirmed key-based login worked *before* disabling password authentication (to avoid lockout):
+```bash
+ssh-copy-id -i ~/.ssh/northwind_server_key.pub -p 2222 mboyanv@localhost
+ssh -i ~/.ssh/northwind_server_key -p 2222 mboyanv@localhost
+```
+
+3. Edited `/etc/ssh/sshd_config` and applied the following changes:
+
+PasswordAuthentication no
+PermitRootLogin no
+Port 2200
+
+4. Updated VirtualBox NAT port forwarding to map host port 2222 → guest port 2200 (previously mapped to port 22), to stay consistent with the new internal SSH port.
+
+**Issue encountered:** After updating the `Port` directive, SSH continued listening on port 22 instead of 2200.
+
+**Root cause:** Ubuntu 24.04 uses systemd socket activation (`ssh.socket`) to manage the SSH listening port independently of `sshd_config`. The socket unit remained bound to port 22, overriding the configuration file.
+
+**Resolution:**
+```bash
+sudo systemctl disable --now ssh.socket
+sudo systemctl enable --now ssh.service
+sudo systemctl restart ssh.service
+```
+
+**Verification:**
+- Confirmed via `ss -tlnp | grep ssh` that `sshd` was listening on port 2200 with a new process ID, confirming the configuration reload.
+- Confirmed key-based authentication works:
+```bash
+ssh -i ~/.ssh/northwind_server_key -p 2222 mboyanv@localhost
+```
+- Confirmed password authentication is fully disabled by attempting connection without specifying the key:
+```bash
+ssh -p 2222 mboyanv@localhost
+# Result: Permission denied (publickey)
+```
+
+**Why it matters:** With remote employees requiring SSH access, password-based authentication represents a direct and continuously exploitable attack vector, as automated bots constantly scan the internet for exposed SSH services. Enforcing key-based authentication eliminates brute-force risk entirely, disabling root login removes the highest-privilege target from remote access, and moving off the default port reduces exposure to opportunistic automated scanning — a reasonable trade-off for a small organization where remembering a non-standard port is operationally manageable.
+
+---
 ### 4. Firewall Configuration
 *(pending)*
 
