@@ -42,8 +42,6 @@ sudo apt upgrade -y
 
 **Verification:** Confirmed via `ls /var/run/reboot-required` — no reboot required after upgrade.
 
-Upon first boot, the system had multiple outdated packages pending updates, confirmed via apt list --upgradable. All packages were updated using apt update && apt upgrade -y, with no reboot required afterward.
-
 **Why it matters:** Outdated packages may contain known vulnerabilities (CVEs) that have already been patched upstream. Applying updates is the first step in any hardening process, as it addresses software-level flaws that no manual configuration can fix.
 
 ---
