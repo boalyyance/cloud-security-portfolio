@@ -96,10 +96,11 @@ ssh -i ~/.ssh/northwind_server_key -p 2222 mboyanv@localhost
 ```
 
 3. Edited `/etc/ssh/sshd_config` and applied the following changes:
-
+```bash
 PasswordAuthentication no
 PermitRootLogin no
 Port 2200
+```
 
 4. Updated VirtualBox NAT port forwarding to map host port 2222 → guest port 2200 (previously mapped to port 22), to stay consistent with the new internal SSH port.
 
