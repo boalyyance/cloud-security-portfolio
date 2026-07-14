@@ -130,9 +130,49 @@ ssh -p 2222 mboyanv@localhost
 **Why it matters:** With remote employees requiring SSH access, password-based authentication represents a direct and continuously exploitable attack vector, as automated bots constantly scan the internet for exposed SSH services. Enforcing key-based authentication eliminates brute-force risk entirely, disabling root login removes the highest-privilege target from remote access, and moving off the default port reduces exposure to opportunistic automated scanning — a reasonable trade-off for a small organization where remembering a non-standard port is operationally manageable.
 
 ---
-### 4. Firewall Configuration
-*(pending)*
+### 4. Firewall Configuration (UFW)
 
+**Baseline:**
+Checked firewall status using:
+```bash
+sudo ufw status verbose
+```
+Result: UFW was installed but inactive, meaning no traffic filtering was in place. Any service listening on a port (e.g., SSH on 2200) was reachable from any source IP without restriction.
+
+**Remediation:**
+Applied a "Default Deny" policy, following the principle of allowing only explicitly required traffic:
+
+1. Permitted SSH traffic first, to avoid losing remote access before enabling the firewall:
+```bash
+sudo ufw allow 2200/tcp
+```
+
+2. Set default policies — deny all incoming traffic, allow all outgoing traffic:
+```bash
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+```
+
+3. Enabled the firewall:
+```bash
+sudo ufw enable
+```
+
+**Verification:**
+Confirmed firewall status and active rules:
+```bash
+sudo ufw status verbose
+```
+Output confirmed:
+- Status: active
+- Default: deny (incoming), allow (outgoing)
+- Only port 2200/tcp explicitly allowed (IPv4 and IPv6)
+
+Additionally, verified the existing SSH session remained connected after enabling the firewall, confirming the SSH rule was correctly applied before the deny-all policy took effect — avoiding a self-inflicted lockout.
+
+**Why it matters:** With no firewall active, the server accepted unrestricted inbound connections on any open port. Applying a default-deny policy and explicitly allowing only the SSH port needed for remote administration significantly reduces the attack surface, ensuring that only intentionally exposed services can be reached from outside the server — consistent with the principle of least privilege applied at the network level.
+
+---
 ### 5. Sensitive File Permissions
 *(pending)*
 
