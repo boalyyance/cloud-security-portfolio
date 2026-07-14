@@ -174,12 +174,94 @@ Additionally, verified the existing SSH session remained connected after enablin
 
 ---
 ### 5. Sensitive File Permissions
-*(pending)*
+
+**Baseline:**
+Created a simulated patient data file to audit default file permission behavior:
+```bash
+sudo mkdir -p /opt/northwind/patient_records
+sudo nano /opt/northwind/patient_records/patient_001.txt
+```
+
+Checked default permissions:
+```bash
+ls -l /opt/northwind/patient_records/patient_001.txt
+```
+Result: `-rw-r--r-- 1 root root ...` — the file was readable by any user on the system ("others"), despite containing simulated PII/SPII patient data.
+
+**Remediation:**
+
+1. Created a dedicated group to represent authorized medical staff, following a "need to know" access model:
+```bash
+sudo groupadd medical_staff
+sudo usermod -aG medical_staff mboyanv
+```
+
+2. Reassigned the file's group ownership:
+```bash
+sudo chown root:medical_staff /opt/northwind/patient_records/patient_001.txt
+```
+
+3. Applied restrictive permissions, removing all access for unauthorized users:
+```bash
+sudo chmod 640 /opt/northwind/patient_records/patient_001.txt
+```
+
+**Verification:**
+```bash
+ls -l /opt/northwind/patient_records/patient_001.txt
+```
+Confirmed result: `-rw-r----- 1 root medical_staff ...`
+- Owner (`root`): read/write
+- Group (`medical_staff`): read-only
+- Others: no access
+
+**Why it matters:** By default, files created on the system were readable by any local account, regardless of their role. For a healthcare organization handling PII/SPII, this represents a direct compliance and confidentiality risk. Restricting access to a dedicated group, and eliminating all access for unauthorized users, applies the same least-privilege model used throughout this assessment — extending it from account and network-level access down to the file system itself.
+
+---
+
+## Key Takeaways / Security Principles Applied
+
+Across all five controls, the principle of **least privilege** was applied consistently at multiple layers of the system:
+
+- **Account level:** Verified that only the intended administrator account held elevated (`sudo`) privileges, and confirmed that all service accounts were correctly restricted from interactive login.
+- **Network/authentication level:** Enforced key-based SSH authentication, disabled root login, and restricted remote access to a single, explicitly permitted port.
+- **Perimeter level:** Applied a default-deny firewall policy, allowing only the traffic explicitly required for the server's function.
+- **File system level:** Restricted access to sensitive patient data to a dedicated group, removing access for any unauthorized account.
+
+This layered approach reflects a core principle in security hardening: no single control is sufficient on its own. Each layer reduces the impact of a potential failure in another, forming a defense-in-depth posture appropriate for a small organization handling regulated data (PII/SPII).
+
+## Lessons Learned
+
+This project reinforced the importance of following a structured methodology — baseline, remediation, verification, documentation — rather than applying fixes without first understanding the current state of a system.
+
+It also highlighted a practical reality of hands-on security work: unexpected issues (such as the systemd socket activation conflict encountered during SSH hardening) are common, and the ability to diagnose and resolve them methodically is as valuable as knowing the correct configuration in advance.
+
+Working entirely within a controlled lab environment (VirtualBox + Ubuntu Server) also reinforced the operational discipline required before making high-risk changes — such as verifying key-based SSH access before disabling password authentication, and confirming firewall rules before enabling a default-deny policy — to avoid self-inflicted loss of access.
+
+## Future Improvements
+
+Future iterations of this project could include:
+
+- Automating baseline checks and remediation using a shell script or configuration management tool (e.g., Ansible)
+- Mapping each control to specific CIS Benchmark for Ubuntu Linux control IDs
+- Extending the firewall configuration to include rate-limiting for SSH (e.g., using `ufw limit`) to mitigate brute-force attempts at the network level
+- Implementing centralized logging and alerting for failed authentication attempts
+- Creating additional simulated user roles (e.g., a limited "IT support" account) to test group-based access control more thoroughly
 
 ## Skills Demonstrated
-*(to be completed at the end)*
+
+- **Linux System Administration:** Installed, configured, and managed services (SSH, UFW) on Ubuntu Server via command line.
+- **Security Hardening:** Applied hardening measures aligned with CIS Benchmark principles across user accounts, SSH, firewall, and file permissions.
+- **Access Control & Least Privilege:** Designed and implemented group-based access control for sensitive data, and audited administrative privilege assignment.
+- **SSH & Cryptographic Authentication:** Generated and deployed SSH key pairs, transitioning a service from password-based to key-based authentication without loss of access.
+- **Firewall Configuration:** Implemented a default-deny network policy using UFW, balancing security with operational accessibility.
+- **Troubleshooting & Root Cause Analysis:** Diagnosed and resolved a systemd socket activation conflict that prevented an SSH configuration change from taking effect.
+- **Technical Documentation:** Produced structured, evidence-based documentation following a baseline-remediation-verification methodology.
 
 ## Tools & Frameworks
+
 - CIS Benchmark principles (Ubuntu Linux)
 - Oracle VirtualBox
 - Ubuntu Server 24.04 LTS
+- OpenSSH
+- UFW (Uncomplicated Firewall)
