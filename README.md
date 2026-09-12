@@ -1,43 +1,35 @@
-# Cloud Security Portfolio
+# Security Fundamentals Portfolio
 
-Welcome to my Cloud Security Portfolio.
+Hands-on cybersecurity projects demonstrating practical skills in risk assessment, security auditing, and Linux system hardening.
 
-This repository contains hands-on cybersecurity and cloud security projects designed to demonstrate practical technical skills in Linux, Python, SQL, incident response, and AWS.
+For hands-on AWS + Terraform work (IAM, S3 hardening, EC2 security, Infrastructure as Code), see my [AWS + Terraform Security Practice](https://github.com/boalyyance/terraform-aws-security-practice) repo.
 
 ---
 
-## Current Learning Roadmap
+## Certifications
 
 - ✅ Google Cybersecurity Professional Certificate
-- 🔄 Building hands-on cybersecurity projects
-- 🔄 AWS Cloud fundamentals
-- 🔄 Cloud Security labs
-- 🔄 Python automation for cybersecurity
+- ✅ AWS Certified Cloud Practitioner (CLF-C02)
 
 ---
 
 ## Projects
 
-| Project | Status |
+| Project | Description |
 |---|---|
-| [Risk Assessment](./projects/risk-assessment/) | ✅ Done |
-| [Linux Security Lab](./projects/linux-security-lab/) | ✅ Done |
+| [Risk Assessment](./projects/risk-assessment/) | Simulated internal security audit aligned with the NIST Cybersecurity Framework — control evaluation, vulnerability identification, and remediation planning |
+| [Linux Security Lab](./projects/linux-security-lab/) | System hardening on Linux — access control, service minimization, and security configuration |
 
 ---
 
 ## Skills
 
-- Risk Assessment
-- Linux
-- SQL
-- Python
-- Security Operations
-- Incident Response
-- Networking
-- Cloud Security (Learning)
+**Security:** Risk Assessment · NIST CSF · Compliance Analysis · Security Control Evaluation · Incident Response Fundamentals
+**Systems:** Linux Hardening · Networking Basics
+**Documentation:** Audit Reporting · Remediation Planning
 
 ---
 
 ## Goal
 
-To become a Cloud Security professional by developing practical skills through projects that simulate real-world security scenarios.
+Building toward an entry-level Cloud Security role through hands-on projects that simulate real-world security scenarios — paired with active AWS/Terraform practice in a [separate repo](https://github.com/boalyyance/terraform-aws-security-practice).
