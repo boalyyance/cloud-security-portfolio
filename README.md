@@ -21,12 +21,7 @@ This repository contains hands-on cybersecurity and cloud security projects desi
 | Project | Status |
 |---|---|
 | [Risk Assessment](./projects/risk-assessment/) | ✅ Done |
-| [Linux Security Lab](./projects/linux-security-lab/) | 🚧 In progress |
-| [SQL Log Investigation](./projects/sql-log-investigation/) | ⏳ Planned |
-| [Python Automation](./projects/python-automation/) | ⏳ Planned |
-| [Incident Response](./projects/incident-response/) | ⏳ Planned |
-| [AWS IAM Lab](./projects/aws-iam-lab/) | ⏳ Planned |
-| [CloudTrail Investigation](./projects/cloudtrail-investigation/) | ⏳ Planned |
+| [Linux Security Lab](./projects/linux-security-lab/) | ✅ Done |
 
 ---
 
